@@ -36,10 +36,7 @@ describe("Poseidon hash", function () {
     const randY = getRandomUint256();
     const unit2Hash = await poseidonHash.unit2Hash([randX, randY]);
     const t3Hash = await poseidonHash.t3Hash([randX, randY]);
-    console.log({
-      unit2HashGasUsed: (await unit2Hash.wait()).cumulativeGasUsed.toNumber(),
-      t3HashGasUsed: (await t3Hash.wait()).cumulativeGasUsed.toNumber(),
-    });
+    expect(unit2Hash).to.equal(t3Hash);
   });
 });
 
